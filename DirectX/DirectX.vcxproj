@@ -18,6 +18,27 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\core\Camera.h" />
+    <ClInclude Include="..\source\core\d3dApp.h" />
+    <ClInclude Include="..\source\core\d3dUtil.h" />
+    <ClInclude Include="..\source\core\d3dx12.h" />
+    <ClInclude Include="..\source\core\DDSTextureLoader.h" />
+    <ClInclude Include="..\source\core\GameTimer.h" />
+    <ClInclude Include="..\source\core\GeometryGenerator.h" />
+    <ClInclude Include="..\source\core\MathHelper.h" />
+    <ClInclude Include="..\source\core\UploadBuffer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\source\apps\EmptySample\InitDirect3DApp.cpp" />
+    <ClCompile Include="..\source\core\Camera.cpp" />
+    <ClCompile Include="..\source\core\d3dApp.cpp" />
+    <ClCompile Include="..\source\core\d3dUtil.cpp" />
+    <ClCompile Include="..\source\core\DDSTextureLoader.cpp" />
+    <ClCompile Include="..\source\core\GameTimer.cpp" />
+    <ClCompile Include="..\source\core\GeometryGenerator.cpp" />
+    <ClCompile Include="..\source\core\MathHelper.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -72,6 +93,10 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <PublicIncludeDirectories>
+    </PublicIncludeDirectories>
+    <AllProjectIncludesArePublic>false</AllProjectIncludesArePublic>
+    <IncludePath>E:\repos\DirectX\source\core;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -87,7 +112,7 @@
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -138,9 +163,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\Source\d3dApp.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
