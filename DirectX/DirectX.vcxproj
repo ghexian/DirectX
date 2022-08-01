@@ -19,6 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\source\apps\EmptySample\InitDirect3DApp.cpp" />
+    <ClCompile Include="..\source\core\Camera.cpp" />
+    <ClCompile Include="..\source\core\d3dApp.cpp" />
+    <ClCompile Include="..\source\core\d3dUtil.cpp" />
+    <ClCompile Include="..\source\core\DDSTextureLoader.cpp" />
+    <ClCompile Include="..\source\core\GameTimer.cpp" />
+    <ClCompile Include="..\source\core\GeometryGenerator.cpp" />
+    <ClCompile Include="..\source\core\MathHelper.cpp" />
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="..\source\core\Camera.h" />
     <ClInclude Include="..\source\core\d3dApp.h" />
     <ClInclude Include="..\source\core\d3dUtil.h" />
@@ -28,16 +38,6 @@
     <ClInclude Include="..\source\core\GeometryGenerator.h" />
     <ClInclude Include="..\source\core\MathHelper.h" />
     <ClInclude Include="..\source\core\UploadBuffer.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\source\apps\EmptySample\InitDirect3DApp.cpp" />
-    <ClCompile Include="..\source\core\Camera.cpp" />
-    <ClCompile Include="..\source\core\d3dApp.cpp" />
-    <ClCompile Include="..\source\core\d3dUtil.cpp" />
-    <ClCompile Include="..\source\core\DDSTextureLoader.cpp" />
-    <ClCompile Include="..\source\core\GameTimer.cpp" />
-    <ClCompile Include="..\source\core\GeometryGenerator.cpp" />
-    <ClCompile Include="..\source\core\MathHelper.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -103,6 +103,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <PublicIncludeDirectories>$(PublicIncludeDirectories)</PublicIncludeDirectories>
+    <IncludePath>G:\CppProjects\DirectX\source\core;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>

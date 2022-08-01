@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="include">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="source">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
@@ -12,44 +8,12 @@
     <Filter Include="source\core">
       <UniqueIdentifier>{6b09ab0b-a614-42b1-afd5-b2b4bdc69915}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\core">
-      <UniqueIdentifier>{96991ccb-4749-4ac4-bcc7-3adad8bf8135}</UniqueIdentifier>
-    </Filter>
     <Filter Include="source\apps">
       <UniqueIdentifier>{ac9ede8f-dcfd-43d3-ab9f-ad81646a6a46}</UniqueIdentifier>
     </Filter>
     <Filter Include="source\apps\EmptySample">
       <UniqueIdentifier>{f2f413bb-65d0-48e7-90fe-c470b999ef17}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\source\core\d3dApp.h">
-      <Filter>include\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\core\Camera.h">
-      <Filter>include\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\core\d3dUtil.h">
-      <Filter>include\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\core\d3dx12.h">
-      <Filter>include\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\core\DDSTextureLoader.h">
-      <Filter>include\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\core\GameTimer.h">
-      <Filter>include\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\core\GeometryGenerator.h">
-      <Filter>include\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\core\MathHelper.h">
-      <Filter>include\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\core\UploadBuffer.h">
-      <Filter>include\core</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\source\core\d3dApp.cpp">
@@ -76,5 +40,34 @@
     <ClCompile Include="..\source\apps\EmptySample\InitDirect3DApp.cpp">
       <Filter>source\apps\EmptySample</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\core\Camera.h">
+      <Filter>source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\core\d3dApp.h">
+      <Filter>source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\core\d3dUtil.h">
+      <Filter>source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\core\d3dx12.h">
+      <Filter>source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\core\DDSTextureLoader.h">
+      <Filter>source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\core\GameTimer.h">
+      <Filter>source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\core\GeometryGenerator.h">
+      <Filter>source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\core\MathHelper.h">
+      <Filter>source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\core\UploadBuffer.h">
+      <Filter>source\core</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

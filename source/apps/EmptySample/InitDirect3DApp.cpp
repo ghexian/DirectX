@@ -26,28 +26,28 @@ private:
 
 };
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,
-				   PSTR cmdLine, int showCmd)
-{
-	// Enable run-time memory check for debug builds.
-#if defined(DEBUG) | defined(_DEBUG)
-	_CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
-#endif
-
-    try
-    {
-        InitDirect3DApp theApp(hInstance);
-        if(!theApp.Initialize())
-            return 0;
-
-        return theApp.Run();
-    }
-    catch(DxException& e)
-    {
-        MessageBox(nullptr, e.ToString().c_str(), L"HR Failed", MB_OK);
-        return 0;
-    }
-}
+//int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,
+//				   PSTR cmdLine, int showCmd)
+//{
+//	// Enable run-time memory check for debug builds.
+//#if defined(DEBUG) | defined(_DEBUG)
+//	_CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
+//#endif
+//
+//    try
+//    {
+//        InitDirect3DApp theApp(hInstance);
+//        if(!theApp.Initialize())
+//            return 0;
+//
+//        return theApp.Run();
+//    }
+//    catch(DxException& e)
+//    {
+//        MessageBox(nullptr, e.ToString().c_str(), L"HR Failed", MB_OK);
+//        return 0;
+//    }
+//}
 
 InitDirect3DApp::InitDirect3DApp(HINSTANCE hInstance)
 : D3DApp(hInstance) 
@@ -87,23 +87,27 @@ void InitDirect3DApp::Draw(const GameTimer& gt)
     ThrowIfFailed(mCommandList->Reset(mDirectCmdListAlloc.Get(), nullptr));
 
 	// Indicate a state transition on the resource usage.
-	mCommandList->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(CurrentBackBuffer(),
-		D3D12_RESOURCE_STATE_PRESENT, D3D12_RESOURCE_STATE_RENDER_TARGET));
+	CD3DX12_RESOURCE_BARRIER barrier = CD3DX12_RESOURCE_BARRIER::Transition(CurrentBackBuffer(),
+		D3D12_RESOURCE_STATE_PRESENT, D3D12_RESOURCE_STATE_RENDER_TARGET);
+	mCommandList->ResourceBarrier(1, &barrier);
 
     // Set the viewport and scissor rect.  This needs to be reset whenever the command list is reset.
     mCommandList->RSSetViewports(1, &mScreenViewport);
     mCommandList->RSSetScissorRects(1, &mScissorRect);
 
     // Clear the back buffer and depth buffer.
-	mCommandList->ClearRenderTargetView(CurrentBackBufferView(), Colors::LightSteelBlue, 0, nullptr);
-	mCommandList->ClearDepthStencilView(DepthStencilView(), D3D12_CLEAR_FLAG_DEPTH | D3D12_CLEAR_FLAG_STENCIL, 1.0f, 0, 0, nullptr);
+	D3D12_CPU_DESCRIPTOR_HANDLE backBuffer = CurrentBackBufferView();
+	D3D12_CPU_DESCRIPTOR_HANDLE stecil = DepthStencilView();
+	mCommandList->ClearRenderTargetView(backBuffer, Colors::LightSteelBlue, 0, nullptr);
+	mCommandList->ClearDepthStencilView(stecil, D3D12_CLEAR_FLAG_DEPTH | D3D12_CLEAR_FLAG_STENCIL, 1.0f, 0, 0, nullptr);
 	
     // Specify the buffers we are going to render to.
-	mCommandList->OMSetRenderTargets(1, &CurrentBackBufferView(), true, &DepthStencilView());
+	mCommandList->OMSetRenderTargets(1, &backBuffer, true, &stecil);
 	
     // Indicate a state transition on the resource usage.
-	mCommandList->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(CurrentBackBuffer(),
-		D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT));
+	barrier = CD3DX12_RESOURCE_BARRIER::Transition(CurrentBackBuffer(),
+		D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT);
+	mCommandList->ResourceBarrier(1, &barrier);
 
     // Done recording commands.
 	ThrowIfFailed(mCommandList->Close());
