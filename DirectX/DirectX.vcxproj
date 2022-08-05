@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\source\apps\BoxApp\BoxApp.cpp" />
     <ClCompile Include="..\source\apps\EmptySample\InitDirect3DApp.cpp" />
     <ClCompile Include="..\source\core\Camera.cpp" />
     <ClCompile Include="..\source\core\d3dApp.cpp" />
@@ -38,6 +39,9 @@
     <ClInclude Include="..\source\core\GeometryGenerator.h" />
     <ClInclude Include="..\source\core\MathHelper.h" />
     <ClInclude Include="..\source\core\UploadBuffer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\source\apps\BoxApp\color.hlsl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
