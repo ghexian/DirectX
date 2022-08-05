@@ -15,7 +15,7 @@
       <UniqueIdentifier>{f2f413bb-65d0-48e7-90fe-c470b999ef17}</UniqueIdentifier>
     </Filter>
     <Filter Include="source\apps\BoxApp">
-      <UniqueIdentifier>{993a5c63-1dc3-4f8a-b34f-34257de4d5f5}</UniqueIdentifier>
+      <UniqueIdentifier>{844440dd-67ab-4f96-b16c-52757a6eed6d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -75,10 +75,5 @@
     <ClInclude Include="..\source\core\UploadBuffer.h">
       <Filter>source\core</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="..\source\apps\BoxApp\color.hlsl">
-      <Filter>source\apps\BoxApp</Filter>
-    </FxCompile>
   </ItemGroup>
 </Project>
