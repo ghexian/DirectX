@@ -76,4 +76,7 @@
       <Filter>source\core</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\source\apps\BoxApp\color.hlsl" />
+  </ItemGroup>
 </Project>
