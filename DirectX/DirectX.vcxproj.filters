@@ -77,6 +77,11 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="..\source\apps\BoxApp\color.hlsl" />
+    <FxCompile Include="..\source\apps\BoxApp\color1.hlsl">
+      <Filter>source\apps\BoxApp</Filter>
+    </FxCompile>
+    <FxCompile Include="..\source\apps\BoxApp\color.hlsl">
+      <Filter>source\apps\BoxApp</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

@@ -35,6 +35,7 @@ struct Vertex1
 struct ObjectConstants
 {
 	XMFLOAT4X4 WorldViewProj = MathHelper::Identity4x4();
+	float gTime;
 };
 
 class BoxApp : public D3DApp
@@ -163,6 +164,7 @@ void BoxApp::Update(const GameTimer& gt)
 
 	ObjectConstants objConstants;
 	XMStoreFloat4x4(&objConstants.WorldViewProj, XMMatrixTranspose(worldViewProj));
+	objConstants.gTime = mTimer.TotalTime();
 	mObjectCB->CopyData(0, objConstants);
 }
 
@@ -275,8 +277,8 @@ void BoxApp::BuildConstantBuffers()
 	mObjectCB = std::make_unique<UploadBuffer<ObjectConstants>>(md3dDevice.Get(), 1, true);
 	UINT objCBByteSize = d3dUtil::CalcConstantBufferByteSize(sizeof(ObjectConstants));
 	D3D12_GPU_VIRTUAL_ADDRESS cbAddress = mObjectCB->Resource()->GetGPUVirtualAddress();
-	int boxCBufIndex = 0;
-	cbAddress += boxCBufIndex * objCBByteSize;
+	UINT boxCBufIndex = 0;
+	cbAddress += (UINT64)boxCBufIndex * objCBByteSize;
 	D3D12_CONSTANT_BUFFER_VIEW_DESC cbvDesc;
 	cbvDesc.BufferLocation = cbAddress;
 	cbvDesc.SizeInBytes = d3dUtil::CalcConstantBufferByteSize(sizeof(ObjectConstants));
@@ -306,8 +308,12 @@ void BoxApp::BuildShadersAndInputLayout()
 	//HRESULT hr = S_OK;
 	//mvsByteCode = d3dUtil::CompileShader(L"../source/apps/BoxApp/color.hlsl", nullptr, "VS", "vs_5_0");
 	//mpsByteCode = d3dUtil::CompileShader(L"../source/apps/BoxApp/color.hlsl", nullptr, "PS", "ps_5_0");
-	mvsByteCode = d3dUtil::LoadBinary(L"../source/apps/BoxApp/color_vs.cso");
-	mpsByteCode = d3dUtil::LoadBinary(L"../source/apps/BoxApp/color_ps.cso");
+	//mvsByteCode = d3dUtil::LoadBinary(L"../source/apps/BoxApp/color_vs.cso");
+	//mpsByteCode = d3dUtil::LoadBinary(L"../source/apps/BoxApp/color_ps.cso");
+
+	// º”‘ÿcolor1.hlsl
+	mvsByteCode = d3dUtil::CompileShader(L"../source/apps/BoxApp/color1.hlsl", nullptr, "VS", "vs_5_0");
+	mpsByteCode = d3dUtil::CompileShader(L"../source/apps/BoxApp/color1.hlsl", nullptr, "PS", "ps_5_0");
 
 	mInputLayout = {
 		{"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0},
