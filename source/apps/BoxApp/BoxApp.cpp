@@ -35,6 +35,7 @@ struct Vertex1
 struct ObjectConstants
 {
 	XMFLOAT4X4 WorldViewProj = MathHelper::Identity4x4();
+	XMFLOAT4 gPulseColor;
 	float gTime;
 };
 
@@ -165,6 +166,7 @@ void BoxApp::Update(const GameTimer& gt)
 	ObjectConstants objConstants;
 	XMStoreFloat4x4(&objConstants.WorldViewProj, XMMatrixTranspose(worldViewProj));
 	objConstants.gTime = mTimer.TotalTime();
+	//objConstants.gPulseColor = {1.0f, 1.0f, 1.0f, 1.0f};
 	mObjectCB->CopyData(0, objConstants);
 }
 
@@ -306,18 +308,24 @@ void BoxApp::BuildRootSignature()
 void BoxApp::BuildShadersAndInputLayout()
 {
 	//HRESULT hr = S_OK;
-	//mvsByteCode = d3dUtil::CompileShader(L"../source/apps/BoxApp/color.hlsl", nullptr, "VS", "vs_5_0");
-	//mpsByteCode = d3dUtil::CompileShader(L"../source/apps/BoxApp/color.hlsl", nullptr, "PS", "ps_5_0");
+	mvsByteCode = d3dUtil::CompileShader(L"../source/apps/BoxApp/color.hlsl", nullptr, "VS", "vs_5_0");
+	mpsByteCode = d3dUtil::CompileShader(L"../source/apps/BoxApp/color.hlsl", nullptr, "PS", "ps_5_0");
 	//mvsByteCode = d3dUtil::LoadBinary(L"../source/apps/BoxApp/color_vs.cso");
 	//mpsByteCode = d3dUtil::LoadBinary(L"../source/apps/BoxApp/color_ps.cso");
 
 	// 加载color1.hlsl
-	mvsByteCode = d3dUtil::CompileShader(L"../source/apps/BoxApp/color1.hlsl", nullptr, "VS", "vs_5_0");
-	mpsByteCode = d3dUtil::CompileShader(L"../source/apps/BoxApp/color1.hlsl", nullptr, "PS", "ps_5_0");
+	//mvsByteCode = d3dUtil::CompileShader(L"../source/apps/BoxApp/color1.hlsl", nullptr, "VS", "vs_5_0");
+	//mpsByteCode = d3dUtil::CompileShader(L"../source/apps/BoxApp/color1.hlsl", nullptr, "PS", "ps_5_0");
 
+	//mInputLayout = {
+	//	{"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0},
+	//	{"COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0}
+	//};
+
+	//习题11 a
 	mInputLayout = {
-		{"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0},
-		{"COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0}
+		{"COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0},
+		{"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0}
 	};
 
 	// 对应Vertex1的输入布局描述
@@ -413,6 +421,8 @@ void BoxApp::BuildPSO()
 		mpsByteCode->GetBufferSize()
 	};
 	psoDesc.RasterizerState = CD3DX12_RASTERIZER_DESC(D3D12_DEFAULT);
+	//psoDesc.RasterizerState.FillMode = D3D12_FILL_MODE_WIREFRAME;
+	//psoDesc.RasterizerState.CullMode = D3D12_CULL_MODE_FRONT;
 	psoDesc.BlendState = CD3DX12_BLEND_DESC(D3D12_DEFAULT);
 	psoDesc.DepthStencilState = CD3DX12_DEPTH_STENCIL_DESC(D3D12_DEFAULT);
 	psoDesc.SampleMask = UINT_MAX;

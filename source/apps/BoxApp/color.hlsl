@@ -9,6 +9,13 @@ struct VertexIn
 	float4 Color : COLOR;
 };
 
+// œ∞Ã‚11 b
+//struct VertexIn
+//{
+//	float4 Color : COLOR;
+//	float3 Pos : POSITION;
+//};
+
 struct VertexOut
 {
 	float4 PosH : SV_POSITION;
