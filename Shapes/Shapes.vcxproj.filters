@@ -15,36 +15,33 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="..\source\apps\Shapes\color.hlsl">
-      <Filter>源文件</Filter>
-    </FxCompile>
-    <FxCompile Include="..\source\apps\Shapes\color1.hlsl">
+    <ClInclude Include="..\source\apps\ShapesApp\FrameResource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\apps\ShapesApp\RenderItem.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\apps\ShapesApp\ShapesApp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\source\apps\ShapesApp\color.hlsl">
       <Filter>源文件</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\source\apps\Shapes\ShapesApp.cpp">
+    <ClCompile Include="..\source\apps\ShapesApp\FrameResource.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\apps\Shapes\FrameResource.cpp">
+    <ClCompile Include="..\source\apps\ShapesApp\Main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\apps\Shapes\Main.cpp">
+    <ClCompile Include="..\source\apps\ShapesApp\RenderItem.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\apps\Shapes\RenderItem.cpp">
+    <ClCompile Include="..\source\apps\ShapesApp\ShapesApp.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\source\apps\Shapes\FrameResource.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\apps\Shapes\ShapesApp.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\apps\Shapes\RenderItem.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

@@ -18,6 +18,22 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\apps\ShapesApp\FrameResource.h" />
+    <ClInclude Include="..\source\apps\ShapesApp\RenderItem.h" />
+    <ClInclude Include="..\source\apps\ShapesApp\ShapesApp.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\source\apps\ShapesApp\color.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\source\apps\ShapesApp\FrameResource.cpp" />
+    <ClCompile Include="..\source\apps\ShapesApp\Main.cpp" />
+    <ClCompile Include="..\source\apps\ShapesApp\RenderItem.cpp" />
+    <ClCompile Include="..\source\apps\ShapesApp\ShapesApp.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -104,7 +120,7 @@
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)source\core\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -130,25 +146,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <FxCompile Include="..\source\apps\Shapes\color.hlsl">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </FxCompile>
-    <FxCompile Include="..\source\apps\Shapes\color1.hlsl">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </FxCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\source\apps\Shapes\FrameResource.cpp" />
-    <ClCompile Include="..\source\apps\Shapes\Main.cpp" />
-    <ClCompile Include="..\source\apps\Shapes\RenderItem.cpp" />
-    <ClCompile Include="..\source\apps\Shapes\ShapesApp.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\source\apps\Shapes\FrameResource.h" />
-    <ClInclude Include="..\source\apps\Shapes\RenderItem.h" />
-    <ClInclude Include="..\source\apps\Shapes\ShapesApp.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
